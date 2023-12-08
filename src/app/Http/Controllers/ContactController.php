@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\ContactRequest;
+use Illuminate\Http\Request;
 use App\Models\Contact;
 
 class ContactController extends Controller
@@ -12,35 +13,21 @@ class ContactController extends Controller
     }
 
     public function confirm(ContactRequest $request){
-        $contact = $request->only(['name', 'email', 'tel', 'content']);
-        return $contact;
-        return view('confirm', compact('contact'));
+        $confirm = $request->all();
+        return view('confirm',compact('confirm'));
+        
     }
 
-    public function store(ContactRequest $request){
-        $contact = $request->only(['name', 'email', 'tel', 'content']);
-        Contact::create($contact);
-        return view('thanks');
+    public function store(Request $request){
+        $action =$request->get('action','back');
+        if($action == 'back') {
+            return redirect('/')->withInput();
+        } else {
+            $request['tel']=$request['firsttel'].=$request['middletel'].=$request['lasttel'];
+            $contact = $request->only(['lastname','firstname','gender', 'email','tel','address','building','inquiry','detail']);
+            Contact::create($contact);
+            return view('thanks');
+        }
     }
 
-
-//↓あとでけす
-    public function viewindex(){
-     return view('index');
-    }
-    public function viewadmin(){
-     return view('admin');
-    }
-    public function viewlogin(){
-     return view('login');
-    }
-    public function viewregister(){
-     return view('register');
-    }
-    public function viewthanks(){
-     return view('thanks');
-    }
-    public function viewconfirm(){
-     return view('confirm');
-    }
 }
