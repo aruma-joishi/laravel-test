@@ -9,5 +9,6 @@
       <div class="thanks__heading">
         <h2>お問い合わせありがとうございます</h2>
       </div>
+      <a href="{{url('/')}}">Home</a>
     </div>
 @endsection

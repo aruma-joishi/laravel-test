@@ -1,76 +1,84 @@
 @extends('layouts.app')
 
 @section('css')
-<link rel="stylesheet" href="{{ asset('css/index.css') }}">
+  <link rel="stylesheet" href="{{ asset('css/confirm.css') }}">
 @endsection
 
 @section('content')
-    <div class="contact-form__content">
-      <div class="contact-form__heading">
-        <h2>お問い合わせ</h2>
-      </div>
-      <form class="form" action="/contacts" method="post">
-        @csrf
-        <div class="form__group">
-          <div class="form__group-title">
-            <span class="form__label--item">お名前</span>
-            <span class="form__label--required">必須</span>
-          </div>
-          <div class="form__group-content">
-            <div class="form__input--text">
-              <input type="text" name="name" value="{{ $contact['name'] }}"/>
-            </div>
-            <div class="form__error">
-              <!--バリデーション機能を実装したら記述します。-->
-            </div>
-          </div>
-        </div>
-        <div class="form__group">
-          <div class="form__group-title">
-            <span class="form__label--item">メールアドレス</span>
-            <span class="form__label--required">必須</span>
-          </div>
-          <div class="form__group-content">
-            <div class="form__input--text">
-              <input type="email" name="email" value="{{ $contact['email'] }}"/>
-            </div>
-            <div class="form__error">
-              <!--バリデーション機能を実装したら記述します。-->
-            </div>
-          </div>
-        </div>
-        <div class="form__group">
-          <div class="form__group-title">
-            <span class="form__label--item">電話番号</span>
-            <span class="form__label--required">必須</span>
-          </div>
-          <div class="form__group-content">
-            <div class="form__input--text">
-              <input type="tel" name="tel" value="{{ $contact['tel'] }}"/>
-            </div>
-            <div class="form__error">
-              <!--バリデーション機能を実装したら記述します。-->
-            </div>
-          </div>
-        </div>
-        <div class="form__group">
-          <div class="form__group-title">
-            <span class="form__label--item">お問い合わせ内容</span>
-          </div>
-          <div class="form__group-content">
-            <div class="form__input--textarea">
-              <input type="text" name="content" value="{{ $contact['content'] }}" />
-            </div>
-          </div>
-        </div>
-        <div class="form__button">
-          <button class="form__button-submit" type="submit">送信</button>
-        </div>
-      </form>
+  <div class="confirm__content">
+    <div class="confirm__heading">
+      <h2>Confirm</h2>
     </div>
-  </main>
-</body>
+    <form class="form" action="/contacts" method="post">
+      @csrf
+      <div class="confirm-table">
+        <table class="confirm-table__inner">
 
-</html>
+          <tr class="confirm-table__row">
+            <th class="confirm-table__header">お名前</th>
+            <td class="confirm-table__text">
+                <input type="text" name="lastname" value="{{ $confirm['lastname'] }}" readonly/>
+                <input type="text" name="firstname" value="{{ $confirm['firstname'] }}" readonly/>
+            </td>
+          </tr>
+          
+          <tr class="confirm-table__row">
+            <th class="confirm-table__header">性別</th>
+            <td class="confirm-table__text">
+              <input type="text" name="gender" value="{{ $confirm['gender']}}" readonly/>
+            </td>
+          </tr>
 
+          <tr class="confirm-table__row">
+            <th class="confirm-table__header">メールアドレス</th>
+            <td class="confirm-table__text">
+              <input type="email" name="email" value="{{ $confirm['email'] }}" readonly/>
+            </td>
+          </tr>
+
+          <tr class="confirm-table__row">
+            <th class="confirm-table__header">電話番号</th>
+            <td class="confirm-table__text">
+              <input type="tel" name="firsttel" value="{{ $confirm['firsttel']}}" readonly/>
+              <input type="tel" name="middletel" value="{{ $confirm['middletel']}}" readonly/>
+              <input type="tel" name="lasttel" value="{{ $confirm['lasttel']}}" readonly/>
+            </td>
+          </tr>
+
+          <tr class="confirm-table__row">
+            <th class="confirm-table__header">住所</th>
+            <td class="confirm-table__text">
+              <input type="text" name="address" value="{{ $confirm['address']}}" readonly/>
+            </td>
+          </tr>
+
+          <tr class="confirm-table__row">
+            <th class="confirm-table__header">建物名</th>
+            <td class="confirm-table__text">
+              <input type="text" name="building" value="{{ $confirm['building']}}" readonly/>
+            </td>
+          </tr>
+
+          <tr class="confirm-table__row">
+            <th class="confirm-table__header">お問い合わせの種類</th>
+            <td class="confirm-table__text">
+              <input type="text" name="inquiry" value="{{ $confirm['inquiry']}}" readonly/>
+            </td>
+          </tr>
+          
+          <tr class="confirm-table__row">
+            <th class="confirm-table__header">お問い合わせ内容</th>
+            <td class="confirm-table__text">
+              <input type="text" name="detail" value="{{ $confirm['detail']}}" readonly/>
+            </td>
+          </tr>
+        </table>
+      </div>
+
+      <div class="form__button">
+        <button type="submit" name="action" value="submit">送信</button>
+        <button type="submit" name="action" value="back">修正</button>
+      </div>
+    </form> 
+  </div>
 @endsection
