@@ -5,71 +5,65 @@
 @endsection
 
 @section('content')
-    <div class="contact-form__content">
-      <div class="contact-form__heading">
-        <h2>お問い合わせ</h2>
-      </div>
-      <form class="form">
-        <div class="form__group">
-          <div class="form__group-title">
-            <span class="form__label--item">お名前</span>
-            <span class="form__label--required">必須</span>
-          </div>
-          <div class="form__group-content">
-            <div class="form__input--text">
-              <input type="text" name="name" placeholder="テスト太郎" />
-            </div>
-            <div class="form__error">
-              <!--バリデーション機能を実装したら記述します。-->
-            </div>
-          </div>
-        </div>
-        <div class="form__group">
-          <div class="form__group-title">
-            <span class="form__label--item">メールアドレス</span>
-            <span class="form__label--required">必須</span>
-          </div>
-          <div class="form__group-content">
-            <div class="form__input--text">
-              <input type="email" name="email" placeholder="test@example.com" />
-            </div>
-            <div class="form__error">
-              <!--バリデーション機能を実装したら記述します。-->
-            </div>
-          </div>
-        </div>
-        <div class="form__group">
-          <div class="form__group-title">
-            <span class="form__label--item">電話番号</span>
-            <span class="form__label--required">必須</span>
-          </div>
-          <div class="form__group-content">
-            <div class="form__input--text">
-              <input type="tel" name="tel" placeholder="09012345678" />
-            </div>
-            <div class="form__error">
-              <!--バリデーション機能を実装したら記述します。-->
-            </div>
-          </div>
-        </div>
-        <div class="form__group">
-          <div class="form__group-title">
-            <span class="form__label--item">お問い合わせ内容</span>
-          </div>
-          <div class="form__group-content">
-            <div class="form__input--textarea">
-              <textarea name="content" placeholder="資料をいただきたいです"></textarea>
-            </div>
-          </div>
-        </div>
-        <div class="form__button">
-          <button class="form__button-submit" type="submit">送信</button>
-        </div>
-      </form>
+<div class="admin__alert">
+  <div class="admin__alert--success">
+    adminを作成しました
+  </div>
+</div>
+
+<div class="admin__content">
+  <form class="create-form">
+    <div class="create-form__item">
+      <input class="create-form__item-input" type="text" name="content">
     </div>
-  </main>
-</body>
-
-</html>
-
+    <div class="create-form__button">
+      <button class="create-form__button-submit" type="submit">作成</button>
+    </div>
+  </form>
+  <div class="admin-table">
+    <table class="admin-table__inner">
+      <tr class="admin-table__row">
+        <th class="admin-table__header">admin</th>
+      </tr>
+      <tr class="admin-table__row">
+        <td class="admin-table__item">
+          <form class="update-form">
+            <div class="update-form__item">
+              <input class="update-form__item-input" type="text" name="content" value="test">
+            </div>
+            <div class="update-form__button">
+              <button class="update-form__button-submit" type="submit">更新</button>
+            </div>
+          </form>
+        </td>
+        <td class="admin-table__item">
+          <form class="delete-form">
+            <div class="delete-form__button">
+              <button class="delete-form__button-submit" type="submit">削除</button>
+            </div>
+          </form>
+        </td>
+      </tr>
+      <tr class="admin-table__row">
+        <td class="admin-table__item">
+          <form class="update-form">
+            <div class="update-form__item">
+              <input class="update-form__item-input" type="text" name="content" value="test2">
+            </div>
+            <div class="update-form__button">
+              <button class="update-form__button-submit" type="submit">更新</button>
+            </div>
+          </form>
+        </td>
+        <td class="admin-table__item">
+          <form class="delete-form">
+            <div class="delete-form__button">
+              <button class="delete-form__button-submit" type="submit">削除</button>
+            </div>
+          </form>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
 @endsection
