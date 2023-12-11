@@ -5,16 +5,19 @@ namespace App\Http\Controllers;
 use App\Http\Requests\ContactRequest;
 use Illuminate\Http\Request;
 use App\Models\Contact;
+use App\Models\Category;
 
 class ContactController extends Controller
 {
     public function index(){
-     return view('index');
+        $categories = Category::all();
+        return view('index', compact('categories'));
     }
 
     public function confirm(ContactRequest $request){
+        $categories = Category::all();
         $confirm = $request->all();
-        return view('confirm',compact('confirm'));
+        return view('confirm',compact('confirm','categories'));
         
     }
 
@@ -24,7 +27,7 @@ class ContactController extends Controller
             return redirect('/')->withInput();
         } else {
             $request['tel']=$request['firsttel'].=$request['middletel'].=$request['lasttel'];
-            $contact = $request->only(['lastname','firstname','gender', 'email','tel','address','building','inquiry','detail']);
+            $contact = $request->only(['lastname','firstname','gender', 'email','tel','address','building','category_id','detail']);
             Contact::create($contact);
             return view('thanks');
         }

@@ -14,35 +14,19 @@
   <header class="header">
     <div class="header__inner">
       @if (Auth::check())
-  <li class="header-nav__item">
-    <a class="header-nav__link" href="/mypage">マイページ</a>
-  </li>
-  <li class="header-nav__item">
-    <form action="/logout" method="post">
-      @csrf
-      <button class="header-nav__button">ログアウト</button>
-    </form>
-  </li>
- @endif
-</ul>
-      <a class="header__logo" href="/login">
-        Login 
-      </a>
-      <a class="header__logo" href="/admin">
-        admin
-      </a>
-      <a class="header__logo" href="/confirm">
-        confirm
-      </a>
-      <a class="header__logo" href="/register">
-        register
-      </a>
-      <a class="header__logo" href="/thanks">
-        thanks
-      </a>
+      <li class="header-nav__item">
+        <a class="header-nav__link" href="/mypage">マイページ</a>
+      </li>
+      <li class="header-nav__item">
+        <form class="form" action="/logout" method="post">
+          @csrf
+          <button class="header-nav__button">ログアウト</button>
+        </form>
+      </li>
+      @endif
     </div>
   </header>
-
+  
   <main>
     @yield('content')
   </main>

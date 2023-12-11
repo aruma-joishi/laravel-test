@@ -132,13 +132,13 @@
         </div>
         <div class="form__group-content">
           <div class="form__input--text">
+
             <select name="inquiry" >
               <option value="" hidden>選択してください</option>
-              <option value="1. 商品のお届けについて" @if( old('inquiry') == '1. 商品のお届けについて' ) selected @endif>1. 商品のお届けについて</option>
-              <option value="2. 商品の交換について" @if( old('inquiry') === '2. 商品の交換について' ) selected @endif>2. 商品の交換について</option>
-              <option value="3. 商品トラブル" @if( old('inquiry') == '3. 商品トラブル' ) selected @endif>3. 商品トラブル</option>
-              <option value="4. ショップへのお問い合わせ"  @if( old('inquiry') == '4. ショップへのお問い合わせ' ) selected @endif>4. ショップへのお問い合わせ</option>
-              <option value="5. その他"  @if( old('inquiry') == '5. その他' ) selected @endif>5. その他</option>
+              @foreach ($categories as $category)
+              <option value="{{$category['id']}}" @if( old('inquiry') == $category['id'] ) selected @endif>{{$category['name']}}</option>
+              @endforeach
+
             </select>
           </div>
         </div>
