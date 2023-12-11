@@ -62,7 +62,8 @@
           <tr class="confirm-table__row">
             <th class="confirm-table__header">お問い合わせの種類</th>
             <td class="confirm-table__text">
-              <input type="text" name="inquiry" value="{{ $confirm['inquiry']}}" readonly/>
+              <input type="hidden" name="category_id" value="{{$confirm['inquiry']}}" readonly/>
+              <p>{{$categories[$confirm['inquiry']]['name']}}</p>
             </td>
           </tr>
           

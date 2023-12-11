@@ -30,8 +30,8 @@
   text-align: center;
 }
 
-.create-form__item {
-  width: 70%;
+.admin-table__header {
+  color: #842029;
 }
 
 .create-form__item-input {
@@ -83,47 +83,81 @@
   width: 90%;
 }
 
-.update-form {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
+.modal-wrapper {
+  z-index: 999;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 60px 10px;
+  text-align: center
 }
 
-.update-form__item {
-  width: 80%;
-  line-height: 50%;
+.modal-wrapper:not(:target) {
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity .3s, visibility .3s;
 }
 
-.update-form__item-input {
-  width: 100%;
-  outline: none;
-  border: none;
+.modal-wrapper:target {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity .4s, visibility .4s;
 }
 
-.update-form__button {
-  width: 50px;
+.modal-wrapper::after {
+  display: inline-block;
+  height: 100%;
+  margin-left: -.05em;
+  vertical-align: middle;
+  content: ""
 }
 
-.update-form__button-submit {
-  padding: 5px;
-  width: 100%;
-  border: none;
-  border-radius: 3px;
-  background: #0000ff;
-  color: #fff;
-  cursor: pointer;
+.modal-wrapper .modal-window {
+  box-sizing: border-box;
+  display: inline-block;
+  z-index: 20;
+  position: relative;
+  width: 70%;
+  max-width: 600px;
+  padding: 30px 30px 15px;
+  border-radius: 2px;
+  background: #fff;
+  box-shadow: 0 0 30px rgba(0, 0, 0, .6);
+  vertical-align: middle
 }
 
-.delete-form__button {
-  width: 50px;
+.modal-wrapper .modal-window .modal-content {
+  max-height: 80vh;
+  overflow-y: auto;
 }
 
-.delete-form__button-submit {
-  padding: 5px;
-  width: 100%;
-  border: none;
-  border-radius: 3px;
-  background: #ff0000;
-  color: #fff;
-  cursor: pointer;
+.modal-overlay {
+  z-index: 10;
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background: rgba(0, 0, 0, .8)
+}
+
+.modal-wrapper .modal-close {
+  z-index: 20;
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 35px;
+  color: #95979c !important;
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 35px;
+  text-align: center;
+  text-decoration: none;
+  text-indent: 0
+}
+
+.modal-wrapper .modal-close:hover {
+  color: #2b2e38 !important
 }
