@@ -1,19 +1,4 @@
-.header {
-  background: #000;
-}
 
-.header__inner {
-  margin: 0 auto;
-  padding: 20px 15px;
-  max-width: 1230px;
-}
-
-.header__logo {
-  color: #fff;
-  text-decoration: none;
-  font-weight: bold;
-  font-size: 24px;
-}
 
 .confirm__content {
   margin: 0 auto;
@@ -28,7 +13,7 @@
 
 .form {
   margin: 0 auto;
-  width: 70%;
+  width: 100%;
 }
 
 .confirm-table {
@@ -43,19 +28,33 @@
   padding: 15px;
   width: 20%;
   border-bottom: 1px solid #ddd;
-  background-color: #eee;
-  font-weight: bold;
+  background: rgba(135, 117, 101, 1);
+  color:white;
 }
 
 .confirm-table__text {
   padding: 15px;
   border-bottom: 1px solid #ddd;
+  display: flex;
+}
+
+.confirm-table__detail {
+  height:100px;
+
 }
 
 .confirm-table__text input {
-  width: 100%;
+  display:inline;
   outline: none;
   border: none;
+}
+
+.name,.tel{
+  width:40px;
+}
+
+.detail{
+  width:100%;
 }
 
 .confirm-table__row:last-child .confirm-table__header,
@@ -66,15 +65,29 @@
 .form__button {
   margin-top: 30px;
   text-align: center;
+    
+   
 }
 
-.form__button-submit {
+.form__button button {
+  margin:10px;
   padding: 10px;
-  width: 30%;
+  width: 10%;
   height: 50px;
   border: none;
   border-radius: 3px;
-  background: #000;
-  color: #fff;
+  
+  
   cursor: pointer;
+}
+
+.submit{
+  background-color: rgba(135, 117, 101, 1);
+  color: white;
+}
+
+.back{
+  background-color:white;
+  text-decoration: underline;
+  text-decoration-color: rgba(135, 117, 101, 1);;
 }

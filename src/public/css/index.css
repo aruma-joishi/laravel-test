@@ -1,19 +1,3 @@
-.header {
-  background: #000;
-}
-
-.header__inner {
-  margin: 0 auto;
-  padding: 20px 15px;
-  max-width: 1230px;
-}
-
-.header__logo {
-  color: #fff;
-  text-decoration: none;
-  font-weight: bold;
-  font-size: 24px;
-}
 
 .contact-form__content {
   margin: 0 auto;
@@ -38,12 +22,14 @@
   margin-bottom: 15px;
 }
 
+.form__group-content{
+  margin-left:auto;
+}
+
 .form__label--required {
   margin-left: 5px;
   padding: 4px 6px;
-  border-radius: 3px;
-  background: #fafafa;
-  color: #aaa;
+  color: red;
 }
 
 .form__error {
@@ -52,23 +38,102 @@
   text-align: left;
 }
 
-.form__input--text input,
-.form__input--textarea textarea {
+.form__input--name {
+  display: flex;
+}
+
+.form__input--name input {
   padding: 10px;
-  width: 600px;
+  width: 285px;
+  margin-left: 30px;
   border: 1px solid #ddd;
   border-radius: 3px;
   appearance: none;
+  background-color:rgba(244, 244, 244, 1);
+}
+
+.form__input--radio {
+  text-align: left;
+  width: 600px;
+  height: 20px;
+}
+
+input[type="radio"] {
+  position: relative;
+  width: 18px;
+  height: 18px;
+  border: 1px solid rgba(135, 117, 101, 1);
+  border-radius: 50%;
+  vertical-align: -2px;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+input[type="radio"]:checked:before {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: rgba(135, 117, 101, 1);
+  content: '';
+}
+
+.form__input--text{
+  display: block;
+}
+
+.form__input--text input {
+  padding: 10px;
+  width: 600px;
+  height: 40px;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  appearance: none;
+  background-color: rgba(244, 244, 244, 1);
+}
+
+.form__input--tel {
+  display: flex;
+}
+
+.form__input--tel input {
+  padding: 10px;
+  width: 200px;
+  height: 40px;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  appearance: none;
+  background-color: rgba(244, 244, 244, 1);
 }
 
 
 
-.form__input--text input {
+.form__input--textarea textarea {
+  padding: 10px;
+  width: 600px;
+  height: 180px;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  appearance: none;
+  background-color: rgba(244, 244, 244, 1);
+}
+
+.form__input--select {
+  text-align: left;
+  width: 600px;
   height: 40px;
 }
 
-.form__input--textarea textarea {
-  height: 180px;
+select{
+  background-color: rgba(244, 244, 244, 1);
+  color: rgba(135, 117, 101, 1);
+  border: 1px solid #ddd;
+  border-radius: 3px;
+  height: 40px;
 }
 
 .form__button {
@@ -81,7 +146,7 @@
   height: 50px;
   border: none;
   border-radius: 3px;
-  background: #000;
+  background:rgba(135, 117, 101, 1);
   color: #fff;
   cursor: pointer;
 }

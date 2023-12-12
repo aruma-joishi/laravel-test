@@ -12,19 +12,10 @@
 
 <body>
   <header class="header">
-    <div class="header__inner">
-      @if (Auth::check())
-      <li class="header-nav__item">
-        <a class="header-nav__link" href="/mypage">マイページ</a>
-      </li>
-      <li class="header-nav__item">
-        <form class="form" action="/logout" method="post">
-          @csrf
-          <button class="header-nav__button">ログアウト</button>
-        </form>
-      </li>
-      @endif
+    <div class="header-inner">
+      <h2>FashionablyLate</h2>
     </div>
+    @yield('header')
   </header>
   
   <main>
