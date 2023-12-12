@@ -34,6 +34,7 @@ class ContactRequest extends FormRequest
             'firsttel'=> ['required','integer','digits_between:1,5'],
             'middletel'=> ['required','integer','digits_between:1,5'],
             'lasttel'=> ['required','integer','digits_between:1,5'],
+            'address'=> ['required'],
             'inquiry'=>['required'],
             'detail'=> ['required','max:120']
         ];
@@ -58,7 +59,7 @@ class ContactRequest extends FormRequest
             'address.required'=> '住所を入力してください',
             'inquiry.required'=>'お問い合わせの種類を選択してください',
             'detail.required' => 'お問い合わせ内容を入力してください',
-            'detail.max:120' => 'お問い合わせ内容は120文字以内で入力してください',
+            'detail.max:120'=>'お問い合わせ内容は120文字以内で入力してください'
         ];
     }
 

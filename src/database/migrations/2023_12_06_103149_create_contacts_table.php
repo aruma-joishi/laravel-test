@@ -22,7 +22,7 @@ class CreateContactsTable extends Migration
             $table->string('tel');
             $table->string('address');
             $table->string('building')->nullable();
-            $table->foreignId('category_id')->constrained();
+            $table->integer('category_id')->constrained();
             $table->text('detail');
             $table->timestamps();
         });

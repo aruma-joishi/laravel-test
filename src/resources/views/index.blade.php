@@ -18,7 +18,7 @@
           <span class="form__label--required">※</span>
         </div>
         <div class="form__group-content">
-          <div class="form__input--text">
+          <div class="form__input--name">
             <input type="text" name="lastname" placeholder="例：山田" value="{{ old('lastname') }}" />
             <input type="text" name="firstname" placeholder="例：太郎" value="{{ old('firstname') }}" />
           </div>
@@ -78,7 +78,7 @@
           <span class="form__label--required">※</span>
         </div>
         <div class="form__group-content">
-          <div class="form__input--text">
+          <div class="form__input--tel">
             <input type="tel" name="firsttel" placeholder="080" value="{{ old('firsttel') }}" />
             <input type="tel" name="middletel" placeholder="1234" value="{{ old('middletel') }}" />
             <input type="tel" name="lasttel" placeholder="5678" value="{{ old('lasttel') }}" />
@@ -131,8 +131,7 @@
           <span class="form__label--required">※</span>
         </div>
         <div class="form__group-content">
-          <div class="form__input--text">
-
+          <div class="form__input--select">
             <select name="inquiry" >
               <option value="" hidden>選択してください</option>
               @foreach ($categories as $category)
