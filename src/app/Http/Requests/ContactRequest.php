@@ -22,7 +22,6 @@ class ContactRequest extends FormRequest
      * @return array
      */
 
-     
     public function rules()
     {
 
@@ -50,16 +49,16 @@ class ContactRequest extends FormRequest
             'firsttel.required' => '電話番号を入力してください',
             'lasttel.required' => '電話番号を入力してください',
             'middletel.required'=> '電話番号を入力してください',
-            'firsttel.integer'=> '電話番号は5桁までの数字で入力してください',
-            'middletel.integer'=> '電話番号は5桁までの数字で入力してください',
-            'lasttel.integer' => '電話番号は5桁までの数字で入力してください',
-            'firsttel.digits_between:1,5'=> '電話番号は5桁までの数字で入力してください',
-            'middletel.digits_between:1,5'=>'電話番号は5桁までの数字で入力してください',
-            'lasttel.digits_between:1,5'=>'電話番号は5桁までの数字で入力してください',
+            'firsttel.integer'=> '電話番号は 半角英数字で入力してください',
+            'middletel.integer'=> '電話番号は 半角英数字で入力してください',
+            'lasttel.integer' => '電話番号は 半角英数字で入力してください',
+            'firsttel.digits_between'=> '電話番号は5桁までの数字で入力してください',
+            'middletel.digits_between'=>'電話番号は5桁までの数字で入力してください',
+            'lasttel.digits_between'=>'電話番号は5桁までの数字で入力してください',
             'address.required'=> '住所を入力してください',
             'inquiry.required'=>'お問い合わせの種類を選択してください',
             'detail.required' => 'お問い合わせ内容を入力してください',
-            'detail.max:120'=>'お問い合わせ内容は120文字以内で入力してください'
+            'detail.max'=>'お問い合わせ内容は120文字以内で入力してください'
         ];
     }
 

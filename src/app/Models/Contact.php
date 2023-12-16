@@ -23,7 +23,7 @@ class Contact extends Model
   public function category(){
     return $this->belongsTo(Category::class);
   }
-  
+
   public function scopeCategorySearch($query, $category_id)
   {
     if (!empty($category_id)) {

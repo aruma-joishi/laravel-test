@@ -40,11 +40,11 @@
         </div>
         <div class="form__group-content">
           <div class="form__input--radio">
-            <input type="radio" id="male" name="gender" value="男性" {{ old ('gender') == '男性' ? 'checked' : '' }} checked/>
+            <input type="radio" id="1" name="gender" value="男性" {{ old ('gender') == '男性' ? 'checked' : '' }} checked/>
             <label for="male">男性</label>
-            <input type="radio" id="female" name="gender" value="女性" {{ old ('gender') == '女性' ? 'checked' : '' }}/>
+            <input type="radio" id="2" name="gender" value="女性" {{ old ('gender') == '女性' ? 'checked' : '' }}/>
             <label for="female">女性</label>
-            <input type="radio" id="other" name="gender" value="その他"{{ old ('gender') == 'その他' ? 'checked' : '' }}/>
+            <input type="radio" id="3" name="gender" value="その他"{{ old ('gender') == 'その他' ? 'checked' : '' }}/>
             <label for="other">その他</label>
           </div>
           <div class="form__error">
@@ -84,15 +84,13 @@
             <input type="tel" name="lasttel" placeholder="5678" value="{{ old('lasttel') }}" />
           </div>
           <div class="form__error">
-            @error('firsttel')
-              {{ $message }}
-            @enderror
-            @error('middletel')
-              {{ $message }}
-            @enderror
-            @error('lasttel')
-              {{ $message }}
-            @enderror
+            @if ($errors->has('firsttel'))
+              {{$errors->first('firsttel')}}
+            @elseif($errors->has('middletel'))
+              {{$errors->first('middletel')}}
+            @elseif($errors->has('lasttel'))
+              {{$errors->first('lasttel')}}
+            @endif
           </div>
         </div>
       </div>
@@ -135,16 +133,15 @@
             <select name="inquiry" >
               <option value="" hidden>選択してください</option>
               @foreach ($categories as $category)
-              <option value="{{$category['id']}}" @if( old('inquiry') == $category['id'] ) selected @endif>{{$category['name']}}</option>
+              <option value="{{$category['id']}}" @if( old('inquiry') == $category['id'] ) selected @endif>{{$category['content']}}</option>
               @endforeach
-
             </select>
           </div>
-        </div>
-        <div class="form__error">
-          @error('inquiry')
-            {{ $message }}
-          @enderror
+          <div class="form__error">
+            @error('inquiry')
+              {{ $message }}
+            @enderror
+          </div>
         </div>
       </div>
 
@@ -157,18 +154,17 @@
           <div class="form__input--textarea">
             <textarea name="detail" placeholder="お問い合わせ内容をご記載ください" >{{ old('detail') }}</textarea>
           </div>
-        </div>
-        <div class="form__error">
-          @error('detail')
-            {{ $message }}
-          @enderror
+          <div class="form__error">
+            @error('detail')
+              {{ $message }}
+            @enderror
+          </div>
         </div>
       </div>
 
-
       <div class="form__button">
         <button class="form__button-submit" type="submit">確認画面</button>
-      </div>    
+      </div>
     </form>
   </div>
 

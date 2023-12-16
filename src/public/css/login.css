@@ -1,4 +1,4 @@
-body {
+body{
   background-color: rgba(241, 236, 230, 1);
 }
 
@@ -10,15 +10,15 @@ body {
 }
 
 .register__button-submit{
-      width: 100%;
-      height: 50px;
-      padding:2px;
-      border: 1px solid rgba(219, 201, 184, 1);
-      border-radius: 1px;
-      background:rgba(246, 246, 246, 1);
-      color:rgba(219, 201, 184, 1);
-      cursor: pointer;
-      text-decoration: none;
+  width: 100%;
+  height: 50px;
+  padding:2px;
+  border: 1px solid rgba(219, 201, 184, 1);
+  border-radius: 1px;
+  background:rgba(246, 246, 246, 1);
+  color:rgba(219, 201, 184, 1);
+  cursor: pointer;
+  text-decoration: none;
 }
 
 .form {
@@ -67,12 +67,12 @@ body {
 
 .form__button-submit {
   padding: 10px;
-    width: 30%;
-    height: 50px;
-    border: none;
-    border-radius: 3px;
-    background: rgba(130, 117, 106, 1);
-    color: #fff;
-    cursor: pointer;
+  width: 30%;
+  height: 50px;
+  border: none;
+  border-radius: 3px;
+  background: rgba(130, 117, 106, 1);
+  color: #fff;
+  cursor: pointer;
 }
 

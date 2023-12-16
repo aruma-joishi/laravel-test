@@ -51,6 +51,6 @@
       <button class="form__button-submit" type="submit">ログイン</button>
     </div>
   </form>
-  
+
 </div>
 @endsection

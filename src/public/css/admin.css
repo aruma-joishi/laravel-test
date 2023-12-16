@@ -50,7 +50,7 @@
   text-decoration: none;
 }
 
-.resset__button-submit {
+.reset__button-submit {
   padding: 10px;
   width: 30%;
   height: 50px;
@@ -80,7 +80,6 @@
   border-radius: 3px;
   appearance: none;
 }
-
 
 .admin-table {
   margin: 30px auto;
@@ -121,9 +120,6 @@
   cursor: pointer;
 }
 
-
-
-
 .modal-wrapper {
   z-index: 999;
   position: fixed;
@@ -144,8 +140,6 @@
   opacity: 1;
   visibility: visible;
 }
-
-
 
 .modal-wrapper .modal-window {
   display: inline-block;
@@ -191,7 +185,6 @@
 
 .modal-table__detail {
   height: 150px;
-
 }
 
 .modal-table__text {

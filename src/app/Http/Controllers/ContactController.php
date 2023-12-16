@@ -18,7 +18,6 @@ class ContactController extends Controller
         $categories = Category::all();
         $confirm = $request->all();
         return view('confirm',compact('confirm','categories'));
-        
     }
 
     public function store(Request $request){
@@ -32,7 +31,5 @@ class ContactController extends Controller
             return view('thanks');
         }
     }
-
-   
 
 }
