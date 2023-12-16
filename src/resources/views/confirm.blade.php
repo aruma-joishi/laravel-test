@@ -21,7 +21,7 @@
                 <input type="text" class=name name="firstname" value="{{ $confirm['firstname'] }}" readonly/>
             </td>
           </tr>
-          
+
           <tr class="confirm-table__row">
             <th class="confirm-table__header">性別</th>
             <td class="confirm-table__text">
@@ -63,10 +63,10 @@
             <th class="confirm-table__header">お問い合わせの種類</th>
             <td class="confirm-table__text">
               <input type="hidden" name="category_id" value="{{$confirm['inquiry']}}" readonly/>
-              <p>{{$categories[$confirm['inquiry']]['name']}}</p>
+              <p>{{$categories[$confirm['inquiry']]['content']}}</p>
             </td>
           </tr>
-          
+
           <tr class="confirm-table__row">
             <th class="confirm-table__header">お問い合わせ内容</th>
             <td class="confirm-table__text confirm-table__text" >
@@ -80,6 +80,6 @@
         <button type="submit" class="submit" name="action" value="submit">送信</button>
         <button type="submit" class="back" name="action" value="back">修正</button>
       </div>
-    </form> 
+    </form>
   </div>
 @endsection

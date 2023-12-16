@@ -6,6 +6,7 @@
 
 @section('header')
 <form class="form" action="/logout" method="post">
+  @csrf
   <button class="header-nav__button">logout</button>
 </form>
 @endsection
@@ -23,7 +24,7 @@
       <select class="search-form__item-select" name="category_id">
         <option value="" hidden>お問い合わせの種類</option>
         @foreach ($categories as $category)
-        <option value="{{ $category['id'] }}">{{ $category['name'] }}</option>
+        <option value="{{ $category['id'] }}">{{ $category['content'] }}</option>
         @endforeach
       </select>
 
@@ -48,8 +49,8 @@
       <tr class="admin-table__main">
         <td class="admin-table__content">{{ $contact['lastname']}} {{ $contact['firstname'] }}</td>
         <td class="admin-table__content">{{ $contact['gender'] }}</td>
-        <td class="admin-table__content">{{ $contact['email'] }}</td>   
-        <td class="admin-table__content">{{$categories[$contact['category_id']]['name']}}</td>
+        <td class="admin-table__content">{{ $contact['email'] }}</td>
+        <td class="admin-table__content">{{$categories[$contact['category_id']]['content']}}</td>
         <td class="update-form__content">
           <a href="#modal-01">詳細</a>
           <div class="modal-wrapper" id="modal-01">
@@ -68,32 +69,32 @@
 
                 <tr class="modal-table__row">
                   <th class="modal-table__header">メールアドレス</th>
-                  <td class="modal-table__text">{{ $contact['email'] }}</td>   
+                  <td class="modal-table__text">{{ $contact['email'] }}</td>
                 </tr>
 
                 <tr class="modal-table__row">
                   <th class="modal-table__header">電話番号</th>
-                  <td class="modal-table__text">{{ $contact['tel'] }}</td>   
+                  <td class="modal-table__text">{{ $contact['tel'] }}</td>
                 </tr>
 
                 <tr class="modal-table__row">
                   <th class="modal-table__header">住所</th>
-                  <td class="modal-table__text">{{ $contact['address'] }}</td>   
+                  <td class="modal-table__text">{{ $contact['address'] }}</td>
                 </tr>
 
                 <tr class="modal-table__row">
                   <th class="modal-table__header">建物名</th>
-                  <td class="modal-table__text">{{ $contact['building'] }}</td>   
+                  <td class="modal-table__text">{{ $contact['building'] }}</td>
                 </tr>
 
                 <tr class="modal-table__row">
                   <th class="modal-table__header">お問い合わせの種類</th>
-                  <td class="modal-table__text">{{$categories[$contact['category_id']]['name']}}</td>   
+                  <td class="modal-table__text">{{$categories[$contact['category_id']]['content']}}</td>
                 </tr>
 
                 <tr class="modal-table__row">
                   <th class="modal-table__header">お問い合わせ内容</th>
-                  <td class="modal-table__text">{{ $contact['detail'] }}</td>   
+                  <td class="modal-table__text">{{ $contact['detail'] }}</td>
                 </tr>
               </table>
 
@@ -112,10 +113,10 @@
         </td>
       </tr>
       @endforeach
-</table>
+    </table>
   </div>
   <form class="reset-form" action="/admin" method="get">
-      <button class="reset-form__button-submit" type="submit">リセット</button>
-    </form>
+    <button class="reset-form__button-submit" type="submit">リセット</button>
+  </form>
 </div>
 @endsection
