@@ -52,8 +52,8 @@
         <td class="admin-table__content">{{ $contact['email'] }}</td>
         <td class="admin-table__content">{{$categories[$contact['category_id']]['content']}}</td>
         <td class="update-form__content">
-          <a href="#modal-01">詳細</a>
-          <div class="modal-wrapper" id="modal-01">
+          <a href="#modal-{{$contact['id']}}">詳細</a>
+          <div class="modal-wrapper" id="modal-{{$contact['id']}}">
             <a href="#!" class="modal-overlay"></a>
             <div class="modal-window">
               <table class="modal-table__inner">

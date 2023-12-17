@@ -64,6 +64,7 @@
             <td class="confirm-table__text">
               <input type="hidden" name="category_id" value="{{$confirm['inquiry']}}" readonly/>
               <p>{{$categories[$confirm['inquiry']]['content']}}</p>
+              <p>{{$categories[$confirm['inquiry']]['id']}}</p>
             </td>
           </tr>
 

@@ -133,7 +133,7 @@
             <select name="inquiry" >
               <option value="" hidden>選択してください</option>
               @foreach ($categories as $category)
-              <option value="{{$category['id']}}" @if( old('inquiry') == $category['id'] ) selected @endif>{{$category['content']}}</option>
+              <option value="{{$category['id']}}" @if( old('inquiry') == $category['id'] ) selected @endif>{{$category['content']}}{{$category['id']}}</option>
               @endforeach
             </select>
           </div>
