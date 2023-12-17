@@ -8,10 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class Category extends Model
 {
     use HasFactory;
-    protected $fillable = [
-        'id',
-        'content'
-    ];
+    protected $fillable = ['content'];
 
     public function contact(){
         return $this->hasOne(Contact::class);
