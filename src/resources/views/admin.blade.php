@@ -19,7 +19,9 @@
   <form class="search-form" action="/admin/search" method="get">
     @csrf
     <div class="search-form__item">
+
       <input class="search-form__item-input" type="text" name="keyword" value="{{ old('keyword') }}">
+
 
       <select class="search-form__item-select" name="category_id">
         <option value="" hidden>お問い合わせの種類</option>
@@ -28,11 +30,23 @@
         @endforeach
       </select>
 
-    </div>
+<!--      
+      <select class="search-form__item-gender" name="gender">
+        <option value="" hidden>性別</option>
+        <option value="">全て</option>
+        <option value="男性">男性</option>
+        <option value="女性">女性</option>
+        <option value="その他">その他</option>
+      </select>
+
+      <input type="date" name="date" value="">
+-->
+
     <div class="search-form__button">
       <button class="search-form__button-submit" type="submit">検索</button>
     </div>
   </form>
+
 {{ $contacts->links() }}
 
   <div class="admin-table">
@@ -50,7 +64,11 @@
         <td class="admin-table__content">{{ $contact['lastname']}} {{ $contact['firstname'] }}</td>
         <td class="admin-table__content">{{ $contact['gender'] }}</td>
         <td class="admin-table__content">{{ $contact['email'] }}</td>
-        <td class="admin-table__content">{{$categories[$contact['category_id']]['content']}}</td>
+        @foreach ($categories as $category)
+          @if ($category['id'] == $contact['category_id'])
+          <td class="admin-table__content">{{$category['content']}}</td>
+          @endif
+        @endforeach
         <td class="update-form__content">
           <a href="#modal-{{$contact['id']}}">詳細</a>
           <div class="modal-wrapper" id="modal-{{$contact['id']}}">
@@ -89,7 +107,11 @@
 
                 <tr class="modal-table__row">
                   <th class="modal-table__header">お問い合わせの種類</th>
-                  <td class="modal-table__text">{{$categories[$contact['category_id']]['content']}}</td>
+                  @foreach ($categories as $category)
+                    @if ($category['id'] == $contact['category_id'])
+                    <td class="modal-table__text">{{$category['content']}}</td>
+                    @endif
+                  @endforeach
                 </tr>
 
                 <tr class="modal-table__row">

@@ -63,8 +63,11 @@
             <th class="confirm-table__header">お問い合わせの種類</th>
             <td class="confirm-table__text">
               <input type="hidden" name="category_id" value="{{$confirm['inquiry']}}" readonly/>
-              <p>{{$categories[$confirm['inquiry']]['content']}}</p>
-              <p>{{$categories[$confirm['inquiry']]['id']}}</p>
+              @foreach ($categories as $category)
+                @if ($category['id'] == $confirm['inquiry'])
+                <p>{{$category['content']}}</p>
+                @endif
+              @endforeach
             </td>
           </tr>
 
