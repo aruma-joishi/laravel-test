@@ -25,13 +25,14 @@
 
       <select class="search-form__item-select" name="category_id">
         <option value="" hidden>お問い合わせの種類</option>
+        <option value="" >全て</option>
         @foreach ($categories as $category)
-        <option value="{{ $category['id'] }}">{{ $category['content'] }}</option>
+        <option value="{{ $category['id'] }}" @if( old($contacts['category']) == $category['id'] ) selected @endif>{{ $category['content'] }}</option>
         @endforeach
       </select>
 
-<!--      
-      <select class="search-form__item-gender" name="gender">
+
+      <select class="search-form__item-select" name="gender">
         <option value="" hidden>性別</option>
         <option value="">全て</option>
         <option value="男性">男性</option>
@@ -40,14 +41,13 @@
       </select>
 
       <input type="date" name="date" value="">
--->
 
     <div class="search-form__button">
       <button class="search-form__button-submit" type="submit">検索</button>
     </div>
   </form>
 
-{{ $contacts->links() }}
+{{ $contacts->appends(request()->query())->links() }}
 
   <div class="admin-table">
     <table class="admin-table__inner">
