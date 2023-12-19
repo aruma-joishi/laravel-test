@@ -41,12 +41,12 @@ class Contact extends Model
     }
   }
 
-/*  public function scopeGenderSearch($query, $gender)
+  public function scopeGenderSearch($query, $gender)
   {
     if (!empty($gender)) {
       $query->where('gender',$gender);
     }
   }
-*/
+
 
 }
