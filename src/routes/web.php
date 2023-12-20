@@ -7,6 +7,8 @@ use App\Http\Controllers\AuthController;
 
 use App\Http\Controllers\AdminController;
 
+use App\Http\Controllers\CsvDownloadController;
+
 //問い合わせ
 Route::get('/', [ContactController::class,'index']);
 Route::post('/contacts/confirm', [ContactController::class, 'confirm']);
@@ -21,3 +23,4 @@ Route::middleware('auth')->group(function () {
 //管理画面
 Route::delete('/admin/delete', [AdminController::class, 'destroy']);
 Route::get('/admin/search', [AdminController::class, 'search']);
+Route::get('/csv-download', [CsvDownloadController::class, 'downloadCsv']);
