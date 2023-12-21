@@ -27,17 +27,16 @@
         <option value="" hidden>お問い合わせの種類</option>
         <option value="">全て</option>
         @foreach ($categories as $category)
-        <option value="{{ $category['id'] }}" @if( old($contacts['category'])==$category['id'] ) selected @endif>{{ $category['content'] }}</option>
+        <option value="{{ $category['id'] }}" @if( old( $category['id']) == $category['id'] ) selected @endif>{{ $category['content'] }}</option>
         @endforeach
       </select>
-
 
       <select class="search-form__item-select" name="gender">
         <option value="" hidden>性別</option>
         <option value="">全て</option>
-        <option value="男性">男性</option>
-        <option value="女性">女性</option>
-        <option value="その他">その他</option>
+        <option value="1" @if( old($contacts['gender'])==1 ) selected @endif>男性</option>
+        <option value="2" @if( old($contacts['gender'])==2 ) selected @endif>女性</option>
+        <option value="3" @if( old($contacts['gender'])==3) selected @endif>その他</option>
       </select>
 
       <input type="date" name="date" value="">
@@ -67,7 +66,13 @@
           @foreach ($contacts as $contact)
           <tr class="admin-table__main">
             <td class="admin-table__content">{{ $contact['lastname']}} {{ $contact['firstname'] }}</td>
-            <td class="admin-table__content">{{ $contact['gender'] }}</td>
+            @if ($contact['gender'] == '1')
+            <td class="admin-table__content">男性</td>
+            @elseif($contact['gender'] == '2')
+            <td class="admin-table__content">女性</td>
+            @elseif($contact['gender'] == '3')
+            <td class="admin-table__content">女性</td>
+            @endif
             <td class="admin-table__content">{{ $contact['email'] }}</td>
             @foreach ($categories as $category)
             @if ($category['id'] == $contact['category_id'])
@@ -87,7 +92,13 @@
 
                     <tr class="modal-table__row">
                       <th class="modal-table__header">性別</th>
-                      <td class="modal-table__text">{{ $contact['gender'] }}</td>
+                      @if ($contact['gender'] == '1')
+                      <td class="modal-table__text">男性</td>
+                      @elseif($contact['gender'] == '2')
+                      <td class="modal-table__text">女性</td>
+                      @elseif($contact['gender'] == '3')
+                      <td class="modal-table__text">女性</td>
+                      @endif
                     </tr>
 
                     <tr class="modal-table__row">

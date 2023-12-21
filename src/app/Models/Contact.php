@@ -20,7 +20,6 @@ class Contact extends Model
     'detail'
   ];
 
-
   public function category(){
     return $this->belongsTo(Category::class);
   }
