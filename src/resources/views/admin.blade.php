@@ -37,7 +37,7 @@
         <option value="2" @if( request('gender')=='2' ) selected @endif>女性</option>
         <option value="3" @if( request('gender')=='3' ) selected @endif>その他</option>
       </select>
-      <input type="date" name="date" value="{{request('date')}}">
+      <input type="date" name="date" >
       <div class="search-form__button">
         <button class="search-form__button-submit" type="submit">検索</button>
       </div>
