@@ -18,6 +18,7 @@ class Contact extends Model
     'category_id',
     'building',
     'detail'
+
   ];
 
   public function category(){
@@ -44,6 +45,13 @@ class Contact extends Model
   {
     if (!empty($gender)) {
       $query->where('gender',$gender);
+    }
+  }
+
+  public function scopeDateSearch($query, $date)
+  {
+    if (!empty($date)) {
+      $query->where('created_at', $date);
     }
   }
 
