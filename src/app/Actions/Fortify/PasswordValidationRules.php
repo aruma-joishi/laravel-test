@@ -13,6 +13,8 @@ trait PasswordValidationRules
      */
     protected function passwordRules(): array
     {
-        return ['required', 'string', new Password];
+        $password = new Password();
+        $password->length(1);
+        return ['required', 'string',$password];
     }
 }

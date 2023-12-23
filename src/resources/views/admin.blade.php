@@ -19,9 +19,8 @@
   <form class="search-form" action="/admin/search" method="get">
     @csrf
     <div class="search-form__item">
-
       <input class="search-form__item-input" type="text" name="keyword" value="{{request('keyword')}}">
-
+      <button class="search-form__button-submit" type="submit"></button>
       <select class="search-form__item-select" name="category_id">
         <option value="" hidden>お問い合わせの種類</option>
         <option value="">全て</option>
@@ -37,12 +36,9 @@
         <option value="2" @if( request('gender')=='2' ) selected @endif>女性</option>
         <option value="3" @if( request('gender')=='3' ) selected @endif>その他</option>
       </select>
-      <input type="date" name="date" >
-      <div class="search-form__button">
-        <button class="search-form__button-submit" type="submit">検索</button>
-      </div>
+      <input type="date" name="date" value="{{request('date')}}">
 
-      <form class="csv-download" action="/csv-download" method="get">
+      <form class="csv-download" action="/admin/csv-download" method="get">
         <div class="download__button">
           <button class="download__button-submit" type="submit">エクスポート</button>
         </div>
@@ -146,11 +142,11 @@
                 </div>
               </div>
             </td>
-            <td class="admin-table__content">{{$contact['created_at']}}</td>
           </tr>
           @endforeach
         </table>
       </div>
+
       <form class="reset-form" action="/admin" method="get">
         <button class="reset-form__button-submit" type="submit">リセット</button>
       </form>
