@@ -3,29 +3,45 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\User;
+use App\Models\Contact;
 use Symfony\Component\HttpFoundation\StreamedResponse;
 
 
 class CsvDownloadController extends Controller
 {
-    $users = User::all();
-        $csvHeader = ['name','gender','email','tel','address','building','category_id', 'email', 'created_at', 'updated_at'];
-        $csvData = $users->toArray();
+    public function downloadCsv()
+    {
+        $header = [
+            '名',
+            '住所'
+        ];
+        $csvDatas = [
+            '0' => [
+                '花子','東京都',
+            ],
+            '1' => [
+                '太郎',
+                '大阪府',
+            ],
+        ];
 
-        $response = new StreamedResponse(function () use ($csvHeader, $csvData) {
+        $callback = function () use ($header) {
             $handle = fopen('php://output', 'w');
-            fputcsv($handle, $csvHeader);
+            mb_convert_variables('SJIS-win', 'UTF-8', $header);
+            fputcsv($handle, $headers);
 
-            foreach ($csvData as $row) {
-                fputcsv($handle, $row);
-            }
-
+                foreach ($csvDatas as $csvData) {
+                    mb_convert_variables('SJIS-win', 'UTF-8', $csvData);
+                    fputcsv($handle, $csvData);
+                }
             fclose($handle);
-        }, 200, [
-            'Content-Type' => 'text/csv',
-            'Content-Disposition' => 'attachment; filename="users.csv"',
-        ]);
+        };
 
-        return $response;
+        $headers = [
+            'Content-Type' => 'text/csv',
+            'Content-Disposition' => 'attachment; filename=顧客データ_' . date('YmdHis') . '.csv'
+        ];
+
+        return responce()->stream($callback, 200, $headers);
+    }
 }

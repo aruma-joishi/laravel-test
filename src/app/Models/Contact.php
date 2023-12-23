@@ -51,7 +51,7 @@ class Contact extends Model
   public function scopeDateSearch($query, $date)
   {
     if (!empty($date)) {
-      $query->where('created_at', $date);
+      $query->where('created_at', 'like', '%'.$date.'%');
     }
   }
 
