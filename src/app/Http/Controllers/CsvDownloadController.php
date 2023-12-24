@@ -42,6 +42,6 @@ class CsvDownloadController extends Controller
             'Content-Disposition' => 'attachment; filename=顧客データ_' . date('YmdHis') . '.csv'
         ];
 
-        return responce()->stream($callback, 200, $headers);
+        return response()->stream($callback, 200, $headers);
     }
 }

@@ -102,20 +102,18 @@
   appearance: none;
 }
 
-.download__button {
-  margin:0 auto;
-  width:200px;
-}
-
-.download__button {
+.download__button-submit {
+  display: inline-block;
+  border: none;
+  cursor: pointer;
+  margin: 100px auto;
+  width: 200px;
   padding: 10px;
   text-align: center;
-
   height: 50px;
   border: none;
   border-radius: 3px;
-  background: rgba(130, 117, 106, 1);
-  color: #fff;
+  background-color: rgba(244, 244, 244, 1);
   cursor: pointer;
 }
 
@@ -130,7 +128,10 @@
 .admin-table__inner {
   width: 100%;
   padding-left: 100px;
-  height: 800px;
+}
+
+.admin-table__row,.admin-table__main {
+  height:70px;
 }
 
 .admin-table__header {
@@ -138,7 +139,6 @@
   background-color: rgba(135, 117, 101, 1);
   padding-left:30px;
   width: 20%;
-  height: 40px;
   text-align: left;
   border-bottom: 1px solid #ddd;
 }
@@ -146,7 +146,6 @@
 .admin-table__main {
   padding-left: 20px;
   width: 100%;
-  height: 40px;
   text-align: left;
   border-bottom: 1px solid #ddd;
 }
