@@ -14,6 +14,7 @@ class CsvDownloadController extends Controller
     public function downloadCsv()
     {
         $contacts = Contact::all();
+        $categories = Category::all();
         $csvHeader = [
             'category_id',
             'last_name',
@@ -37,17 +38,17 @@ class CsvDownloadController extends Controller
                     return mb_convert_encoding($value, 'UTF-8', 'auto');
                 }, $contact->toArray());
 
-                foreach ($categories as $category){
-                    if ($category['id'] == $row['category_id']){
+                foreach ($categories as $category) {
+                    if ($category['id'] == $row['category_id']) {
                         $row['category_id'] = $category['content'];
                     }
                 }
 
-                if($row['gender'] == '1'){
+                if ($row['gender'] == '1') {
                     $row['gender'] = "男性";
-                }elseif($row['gender'] == '2'){
+                } elseif ($row['gender'] == '2') {
                     $row['gender'] = "女性";
-                } elseif ($row['gender'] == '3'){
+                } elseif ($row['gender'] == '3') {
                     $row['gender'] = "その他";
                 }
 
@@ -62,4 +63,3 @@ class CsvDownloadController extends Controller
         return $response;
     }
 }
-
