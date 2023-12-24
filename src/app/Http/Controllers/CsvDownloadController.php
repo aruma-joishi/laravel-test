@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Models\User;
 use App\Models\Contact;
+use App\Models\Category;
+use Illuminate\Http\Response;
 use Symfony\Component\HttpFoundation\StreamedResponse;
 
 
@@ -11,37 +13,53 @@ class CsvDownloadController extends Controller
 {
     public function downloadCsv()
     {
-        $header = [
-            '名',
-            '住所'
-        ];
-        $csvDatas = [
-            '0' => [
-                '花子','東京都',
-            ],
-            '1' => [
-                '太郎',
-                '大阪府',
-            ],
+        $contacts = Contact::all();
+        $csvHeader = [
+            'category_id',
+            'last_name',
+            'first_name',
+            'gender',
+            'email',
+            'tel',
+            'detail',
+            'address',
+            'building',
         ];
 
-        $callback = function () use ($header) {
+        $response = new StreamedResponse(function () use ($csvHeader, $contacts) {
             $handle = fopen('php://output', 'w');
-            mb_convert_variables('SJIS-win', 'UTF-8', $header);
-            fputcsv($handle, $headers);
 
-                foreach ($csvDatas as $csvData) {
-                    mb_convert_variables('SJIS-win', 'UTF-8', $csvData);
-                    fputcsv($handle, $csvData);
+            fprintf($handle, chr(0xEF) . chr(0xBB) . chr(0xBF)); // BOMを付けてUTF-8を明示
+            fputcsv($handle, $csvHeader);
+
+            foreach ($contacts as $contact) {
+                $row = array_map(function ($value) {
+                    return mb_convert_encoding($value, 'UTF-8', 'auto');
+                }, $contact->toArray());
+
+                foreach ($categories as $category){
+                    if ($category['id'] == $row['category_id']){
+                        $row['category_id'] = $category['content'];
+                    }
                 }
+
+                if($row['gender'] == '1'){
+                    $row['gender'] = "男性";
+                }elseif($row['gender'] == '2'){
+                    $row['gender'] = "女性";
+                } elseif ($row['gender'] == '3'){
+                    $row['gender'] = "その他";
+                }
+
+                fputcsv($handle, $row);
+            }
             fclose($handle);
-        };
+        }, Response::HTTP_OK, [
+            'Content-Type' => 'text/csv; charset=UTF-8',
+            'Content-Disposition' => 'attachment; filename="contacts.csv"',
+        ]);
 
-        $headers = [
-            'Content-Type' => 'text/csv',
-            'Content-Disposition' => 'attachment; filename=顧客データ_' . date('YmdHis') . '.csv'
-        ];
-
-        return response()->stream($callback, 200, $headers);
+        return $response;
     }
 }
+
