@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Contact;
 use App\Models\Category;
@@ -11,10 +12,10 @@ use Symfony\Component\HttpFoundation\StreamedResponse;
 
 class CsvDownloadController extends Controller
 {
-    public function downloadCsv()
+    public function downloadCsv(Request $request)
     {
-        $contacts = Contact::all();
-        $categories = Category::all();
+        $contacts = $request->all();
+
         $csvHeader = [
             'category_id',
             'last_name',
@@ -29,7 +30,7 @@ class CsvDownloadController extends Controller
 
         $response = new StreamedResponse(function () use ($csvHeader, $contacts) {
             $handle = fopen('php://output', 'w');
-
+            $categories = Category::all();
             fprintf($handle, chr(0xEF) . chr(0xBB) . chr(0xBF)); // BOMを付けてUTF-8を明示
             fputcsv($handle, $csvHeader);
 

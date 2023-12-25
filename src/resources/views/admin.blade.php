@@ -22,6 +22,7 @@
       <input class="search-form__item-input" type="text" name="keyword" value="{{request('keyword')}}">
       <button class="search-form__button-submit" type="submit"></button>
     </form>
+
     <select class="search-form__item-select" form="search" name="category_id">
       <option value="" hidden>お問い合わせの種類</option>
       <option value="">全て</option>
@@ -43,6 +44,16 @@
     <form class="csv-download" action="/admin/csv-download" method="get">
       <div class="download__button">
         <button class="download__button-submit" type="submit">エクスポート</button>
+        @foreach ($contacts as $contact)
+        <input type="hidden" name="lastname" value="{{ $contact['lastname']}}">
+        <input type="hidden" name="firstname" value="{{ $contact['firstname']}}">
+        <input type="hidden" name="category_id" value="{{ $contact['category_id']}}">
+        <input type="hidden" name="gender" value="{{ $contact['gender']}}">
+        <input type="hidden" name="email" value="{{ $contact['email']}}">
+        <input type="hidden" name="tel" value="{{ $contact['tel']}}">
+        <input type="hidden" name="detail" value="{{ $contact['detail']}}">
+        <input type="hidden" name="address" value="{{ $contact['address']}}">
+        @endforeach
       </div>
     </form>
 
