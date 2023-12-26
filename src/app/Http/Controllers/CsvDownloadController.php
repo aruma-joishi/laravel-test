@@ -14,8 +14,7 @@ class CsvDownloadController extends Controller
 {
     public function downloadCsv(Request $request)
     {
-        $contacts = $request->all();
-
+        $contacts = Contact::KeywordSearch($request->keyword)->CategorySearch($request->category_id)->GenderSearch($request->gender)->DateSearch($request->date)->get();
         $csvHeader = [
             'category_id',
             'last_name',

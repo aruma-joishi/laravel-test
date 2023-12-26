@@ -19,4 +19,4 @@ Route::middleware('auth')->group(function () {
 //管理画面
 Route::delete('/admin/delete', [AdminController::class, 'destroy']);
 Route::get('/admin/search', [AdminController::class, 'search']);
-Route::get('/admin/csv-download', [CsvDownloadController::class, 'downloadCsv']);
+Route::post('/admin/csv-download', [CsvDownloadController::class, 'downloadCsv']);
