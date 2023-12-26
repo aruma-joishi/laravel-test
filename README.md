@@ -18,3 +18,6 @@ Laravek環境構築
 URL
   開発環境: http://localhost:8080
   phpMyAdmin: http://localhost:8080
+
+ER図
+<img width="373" alt="タイトルなし" src="https://github.com/aruma-joishi/laravel-test/assets/144969756/4761aeca-59c2-463f-abc4-57f4bec887f5">
