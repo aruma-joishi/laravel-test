@@ -40,12 +40,20 @@
 }
 
 .search-form__item {
+  margin:auto;
+  width: 80%;
+  display: flex;
+  justify-content: space-around;
   position: relative;
+}
+
+.search-form {
+  width:60%;
 }
 
 .search-form__item input {
   padding: 10px;
-  width: 20%;
+  width:100%;
   height: 40px;
   border: 1px solid #ddd;
   background-color: rgba(244, 244, 244, 1);
@@ -55,8 +63,8 @@
 
 .search-form__button-submit{
   position: absolute;
-  top:-4px;
-  left:-40px;
+  top:-1.5em;
+  left:180px;
   cursor: pointer;
   border: none;
   background-color: rgba(244, 244, 244, 1);
@@ -80,21 +88,22 @@
   content: "";
   }
 
-  .search-form__button-submit::after {
-    position: absolute;
-    top:50%;
-    left: 55%;
-    transform: rotate(-45deg);
-    width:4px;
-    height:9px;
-    box-sizing: border-box;
-    background-color: currentColor;
-    content: "";
-  }
+.search-form__button-submit::after {
+  position: absolute;
+  top:50%;
+  left: 55%;
+  transform: rotate(-45deg);
+  width:4px;
+  height:9px;
+  box-sizing: border-box;
+  background-color: currentColor;
+  content: "";
+}
 
 .search-form__item-select {
   padding: 10px;
-  width: 20%;
+  margin-left: 20px;
+  width: 30%;
   height: 40px;
   border: 1px solid #ddd;
   background-color: rgba(244, 244, 244, 1);
@@ -102,11 +111,18 @@
   appearance: none;
 }
 
+.search-form__bottom {
+  margin:auto;
+  width:80%;
+  display: flex;
+  justify-content: space-between;
+}
+
 .download__button-submit {
   display: inline-block;
   border: none;
   cursor: pointer;
-  margin: 100px auto;
+  margin: 30px auto;
   width: 200px;
   padding: 10px;
   text-align: center;
@@ -116,6 +132,31 @@
   background-color: rgba(244, 244, 244, 1);
   cursor: pointer;
 }
+
+.pagination {
+  display:flex;
+  margin: 30px auto;
+}
+
+.page-link {
+  background-color: white;
+  color: rgba(135, 117, 101, 1);
+  border: 1px solid rgba(135, 117, 101, 1);
+  float: left;
+  padding: 5px 10px;
+  text-decoration: none;
+}
+
+.active .page-link {
+  color: white;
+  background-color: rgba(135, 117, 101, 1);
+  border: 1px solid rgba(135, 117, 101, 1);
+  float: left;
+  padding: 5px 10px;
+  text-decoration: none;
+}
+
+
 
 .admin-table {
   font-size: 20px;
