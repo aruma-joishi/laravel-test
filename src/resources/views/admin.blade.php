@@ -43,7 +43,7 @@
   </div>
 
   <div class="search-form__bottom">
-    <form class="csv-download" action="/admin/csv-download" method="get">
+    <form class="csv-download" action="/admin/export" method="get">
       <div class="download__button">
         <button class="download__button-submit" type="submit">エクスポート</button>
         <input type="hidden" @if($queryParameters !=null) value="{{$queryParameters['keyword']}}" @endif name="keyword">
