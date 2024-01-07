@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\AdminController;
-use App\Http\Controllers\CsvDownloadController;
+use App\Http\Controllers\ExportController;
 
 //問い合わせ
 Route::get('/', [ContactController::class,'index']);
@@ -19,4 +19,4 @@ Route::middleware('auth')->group(function () {
 //管理画面
 Route::delete('/admin/delete', [AdminController::class, 'destroy']);
 Route::get('/admin/search', [AdminController::class, 'search']);
-Route::post('/admin/csv-download', [CsvDownloadController::class, 'downloadCsv']);
+Route::get('/admin/export', [ExportController::class, 'export']);
